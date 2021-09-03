@@ -1,10 +1,13 @@
-import { createLogger, createStore, StoreOptions } from "vuex";
+import { createLogger, createStore, Store, useStore as baseUseStore } from "vuex";
+import { userModule, UserState }  from './module/user'
 import log from './log'
+import { InjectionKey } from "vue";
 
 export interface State {
     count: number
 }
 
+export const key :InjectionKey<Store<State>> = Symbol()
 /**
  * INCREMENT: 假的喜加一
  */
@@ -31,5 +34,12 @@ export const store = createStore<State>({
 
         }
     },
+    modules: {
+        user: userModule,
+    },
     plugins: [createLogger(), log]
 })
+
+export function useStore () {
+    return baseUseStore(key)
+}

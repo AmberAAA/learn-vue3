@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router'
-import { store } from './store'
+import { key, store } from './store'
 
 const app = createApp(App)
 
 app
-    .use(store)
+    .use(store, key)
     .use(router)
     .mount('#app')
