@@ -22,16 +22,9 @@ function plusOne () {
 </script>
 
 <template>
-  count: {{store.state.count}}
-  <Hello data-se="123" :name="'A,n'" :age="12" @change="update">
-    <template v-slot:header>
-      <p >Hello World!</p>
-    </template>
-  </Hello>
-  <hr>
-  <p>APP-NAME: {{name}}</p>
-  <Model v-model:name="name" />
-  <button @click="plusOne">喜加一</button>
+
+<router-view></router-view>
+
 </template>
 
 <style>
