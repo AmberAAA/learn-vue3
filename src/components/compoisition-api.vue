@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive, ref } from '@vue/reactivity'
-import { onMounted } from '@vue/runtime-core';
+import { computed, reactive, ref } from '@vue/reactivity'
+import { onMounted, defineProps } from '@vue/runtime-core';
 const count = ref<number>(0);
 
 const book = reactive({})
@@ -20,15 +20,34 @@ interface Props {
   motto?: string
 }
 
+const isAdult = computed<boolean>(() =>  props.age >= 18)
+
 
 const emits = defineEmits<{
   (event: 'say', motto: string): void,
+  (event: 'emit-age', age: number): void,
 }>()
 
-const props = withDefaults(defineProps<Props>(), {
-  name: 'Amber',
-  age: 18
-})
+type MessageType = "string" | "image" | "audio";
+type Message = {
+id: number;
+type: MessageType;
+content: string;
+};
+
+function myemit(s1: "say", motto: string) : void;
+function myemit(s1: "emit-age", age: number) : void;
+function myemit (x: any, y?: any) : void {
+  // TODO: to somethine
+}
+
+
+
+/**
+ * 组件的Props参数
+ */
+const props = defineProps<Props>()
+
 
 onMounted(() => {
   console.log(`Hello World!`)
