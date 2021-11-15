@@ -19,13 +19,11 @@ function trigger (propertyKey: Key) {
   }
 };
 
-
 const data = {
   a: 1,
   b: 2,
   c: 3
 };
-
 
 const $data = new Proxy(data, {
   get: function (target, propertyKey) {
@@ -45,7 +43,6 @@ window.$data= $data
 function effect () {
   return $data.a + $data.b;
 };
-
 
 const cal = () => {
   console.log(`a + b = ${effect()}`)

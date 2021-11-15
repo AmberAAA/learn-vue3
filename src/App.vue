@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CompoisitionApiVue from './components/compoisition-api.vue';
+import BookVue from './components/book.vue';
 
 const handleSay = (msg: string) => console.log(msg)
 
@@ -7,4 +8,5 @@ const handleSay = (msg: string) => console.log(msg)
 
 <template>
 <CompoisitionApiVue :name="'age'" :age="1228" motto="Hello World" @say="handleSay" />
+<BookVue></BookVue>
 </template>
